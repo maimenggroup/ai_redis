@@ -43,7 +43,7 @@ func (rds *AIRedis)Delete(key string) error {
 	return rds.Cli.Del(key).Err()
 }
 
-func (rds *AIRedis)Rpush(key string, value ...interface{}) (n int64, err error) {
+func (rds *AIRedis)Rpush(key string, value interface{}) (n int64, err error) {
 	var v interface{}
 	v, err = rds.Cli.RPush(key, value).Result()
 	if err != nil {
