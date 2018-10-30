@@ -7,7 +7,7 @@ import (
 func TestAIRedis_Init(t *testing.T) {
 	aiRds := &AIRedis{}
 
-	err := aiRds.Init("127.0.1", 21601, "Mindata123", 0)
+	err := aiRds.Init("127.0.1", 21601, "Mindata123", 0, 3600)
 	if err != nil {
 		t.Error("TestAIRedis_Init failed, err ", err.Error())
 	} else {
@@ -20,7 +20,7 @@ func TestAIRedis_Init(t *testing.T) {
 
 func TestAIRedis_Rpush(t *testing.T) {
 	aiRds := &AIRedis{}
-	aiRds.Init("127.0.1", 21601, "Mindata123", 0)
+	aiRds.Init("127.0.1", 21601, "Mindata123", 0, 3600)
 	aiRds.Rpush("jim_test", "1")
 	aiRds.Rpush("jim_test", "1")
 	aiRds.Rpush("jim_test", "1")
@@ -37,7 +37,7 @@ func TestAIRedis_Rpush(t *testing.T) {
 
 func TestAIRedis_SetNX(t *testing.T) {
 	aiRds := &AIRedis{}
-	aiRds.Init("127.0.1", 21601, "Mindata123", 0)
+	aiRds.Init("127.0.1", 21601, "Mindata123", 0, 3600)
 	res, err := aiRds.SetNX("jim_test", "1", 0)
 	if err != nil {
 		t.Error("TestAIRedis_Rpush failed, ", err.Error())
@@ -61,7 +61,7 @@ func TestAIRedis_SetNX(t *testing.T) {
 
 func TestAIRedis_Lpop(t *testing.T) {
 	aiRds := &AIRedis{}
-	aiRds.Init("127.0.1", 21601, "Mindata123", 0)
+	aiRds.Init("127.0.1", 21601, "Mindata123", 0, 3600)
 	aiRds.Delete("jim_test")
 	result, err := aiRds.Lpop("jim_test")
 	if err != nil {
@@ -83,7 +83,7 @@ func TestAIRedis_Lpop(t *testing.T) {
 
 func TestAIRedis_LLen(t *testing.T) {
 	aiRds := &AIRedis{}
-	aiRds.Init("127.0.1", 21601, "Mindata123", 0)
+	aiRds.Init("127.0.1", 21601, "Mindata123", 0, 3600)
 	aiRds.Delete("jim_test")
 	length, err := aiRds.LLen("jim_test")
 	if err != nil {
