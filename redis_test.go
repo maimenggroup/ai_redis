@@ -21,7 +21,7 @@ func TestAIRedis_Init(t *testing.T) {
 func TestAIRedis_Rpush(t *testing.T) {
 	aiRds := &AIRedis{}
 	aiRds.Init("127.0.1", 21601, "Mindata123", 0, 3600)
-	aiRds.Rpush("jim_test", "1")
+	aiRds.Rpush("jim_test", []byte("1"))
 	aiRds.Rpush("jim_test", "1")
 	aiRds.Rpush("jim_test", "1")
 	length, err := aiRds.LLen("jim_test")
@@ -71,7 +71,7 @@ func TestAIRedis_Lpop(t *testing.T) {
 	} else {
 		t.Log("TestAIRedis_Lpop res ", result)
 	}
-	aiRds.Rpush("jim_test", "hello")
+	aiRds.Rpush("jim_test", []byte("hello"))
 	result, err = aiRds.Lpop("jim_test")
 	if err != nil {
 		t.Error("TestAIRedis_Lpop failed, err ", err.Error())
@@ -79,7 +79,6 @@ func TestAIRedis_Lpop(t *testing.T) {
 		t.Log("TestAIRedis_Lpop res ", result)
 	}
 }
-
 
 func TestAIRedis_LLen(t *testing.T) {
 	aiRds := &AIRedis{}

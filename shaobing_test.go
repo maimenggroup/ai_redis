@@ -97,7 +97,6 @@ func TestAISentinel_Lpop(t *testing.T) {
 	}
 }
 
-
 func TestAISentinel_LLen(t *testing.T) {
 	aiRds := &AISentinel{}
 	var addrs []string
